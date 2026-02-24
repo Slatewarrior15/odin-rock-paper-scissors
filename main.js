@@ -1,9 +1,10 @@
+let humanScore = 0
+let computerScore = 0
 
 
 // Randomly return rock , paper , or scissors from the computer
 function getComputerChoice(){
     choice = Math.floor((Math.random() * 3) + 1)
-    console.log(choice)
     switch(choice){
         case 1:
             return("ROCK");
@@ -26,9 +27,7 @@ function getHumanChoice(){
 
 function playGame(){
     let playRound = function(humanChoice,computerChoice){
-        let humanScore = 0
-        let computerScore = 0
-
+    
         const humanWins = 
         (humanChoice == "ROCK" & computerChoice == "SCISSORS")||
         (humanChoice == "PAPER" & computerChoice == "ROCK")|| 
@@ -48,7 +47,10 @@ function playGame(){
         else{
             computerScore++
             console.log(`You lose! ${computerChoice} beats ${humanChoice}`)
+                
         }
+        console.log(`Human: ${humanScore}`)
+        console.log(`Computer: ${computerScore}`)
     }
 
     for ( let rounds = 0; rounds < 5; rounds++){
@@ -57,10 +59,15 @@ function playGame(){
         playRound(humanSelection, computerSelection);
 
     }
+    
 
     if (humanScore > computerScore){
         console.log("You win!")
     }
+    else if (humanScore === computerScore){
+        console.log("You tied!")
+    }
+    
     else{
         console.log("You lose!, better luck next time")
     }
